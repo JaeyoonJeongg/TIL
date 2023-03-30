@@ -85,7 +85,7 @@ assertThat(result.getContent()).isEqualTo(review.getContent());
 
 
 6.포인트 증감이력 테이블 추가?
-u_id / p_id / r_id / plus_minus_flag / point
+u_id / p_id / r_id / cud_flag / point
 
 7.
 리뷰
