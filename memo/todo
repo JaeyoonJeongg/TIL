@@ -1,0 +1,10 @@
+1. insert mapper에
+resultType없애고
+useGeneratedKeys="true" keyProperty="r_id"
+추가
+
+2. ReviewServiceImpl에서
+int r_id = reviewMapper.insertReview(review);
+로 생성된 r_id값 받아오기
+
+3. 리뷰 생성하면 포인트 1점추가되는 userMapper.xml
