@@ -100,3 +100,18 @@ u_id / p_id / r_id / cud_flag / point
 - r_id로 검색해서 point 점수 그대로 삭제
 
 8.인덱스
+
+9. Event dto 추가
+
+POST / events
+{
+String type: "REVIEW"
+String Action: "ADD", "MOD", "DELETE"
+String reviewId
+String content
+List<String> attachedPhotoIds
+String userId
+String placeId
+}
+
+EventService, EventServiceImpl 생성
