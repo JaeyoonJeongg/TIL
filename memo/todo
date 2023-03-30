@@ -98,3 +98,5 @@ u_id / p_id / r_id / plus_minus_flag / point
 
 삭제할때
 - r_id로 검색해서 point 점수 그대로 삭제
+
+8.인덱스
