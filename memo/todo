@@ -82,3 +82,19 @@ then
  */
 assertThat(result.getContent()).isEqualTo(review.getContent());
 사용
+
+
+6.포인트 증감이력 테이블 추가?
+u_id / p_id / r_id / plus_minus_flag / point
+
+7.
+리뷰
+생성할때
+- 장소의 첫 리뷰인지
+- 글만있는지/ 사진도있는지
+
+수정할때
+- 사진 추가했는지/ 사진 삭제했는지
+
+삭제할때
+- r_id로 검색해서 point 점수 그대로 삭제
