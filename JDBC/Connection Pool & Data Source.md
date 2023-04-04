@@ -60,7 +60,7 @@
 
 #### DataSource
 
-- DataSource는 커넥션을 획득하는 방법을 추상화 하는 인터페이스
+- DataSource는 **커넥션을 획득하는 방법을 추상화** 하는 인터페이스
 - DataSource의 핵심 기능 : 커넥션 조회 (다른 기능들은 중요하지 않음)
 ```java
 public interface DataSource {
