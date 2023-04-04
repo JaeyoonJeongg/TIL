@@ -60,13 +60,43 @@
 
 #### DataSource
 
-- DataSource는 커넥션을 획득하는 방법을 추상화 하는 인터페이스.
-- DataSource의 핵심 기능
+- DataSource는 커넥션을 획득하는 방법을 추상화 하는 인터페이스
+- DataSource의 핵심 기능 : 커넥션 조회 (다른 기능들은 중요하지 않음)
 ```java
 public interface DataSource {
     Connection getConnection() throws SQLException;
 }
 ```
+#### DataSource 정리
 - 대부분의 커넥션 풀은 DataSource 인터페이스를 이미 구현해둠
 - 커넥션 풀 구현 기술을 변경하고 싶으면 해당 구현체로 갈아끼우면 됨
-- Driver Manager는 DataSource 인터페이스 사용하지 않음
+- DriverManager는 DataSource 인터페이스 사용하지 않음
+- 스프링에서는 DriverManager가 Datasource를 통해서 사용할 수 있도록 DriverManegerDataSource를 제공함
+- 자바는 DataSource를 통해 커넥션을 획득하는 방법을 추상화햤기 때문에 애플리케이션 로직은 DataSource 인터페이스에만 의존하면 된다.
+``` java
+void dataSourceDriverManager() throws SQLException {
+        //DriverManagerDataSource -> 항상 새로운 커넥션을 획득
+         DriverManagerDataSource dataSource = new DriverManagerDataSource(URL, USERNAME, PASSWORD);
+          useDataSource(dataSource);
+     }
+
+     private void useDataSource(DataSource dataSource) throws SQLException {
+        Connection con1 = dataSource.getConnection();
+        Connection con2 = dataSource.getConnection();
+        log.info("connection={}, class={}",con1, con1.getClass());
+        log.info("connection={}, class={}",con2, con2.getClass());
+     }
+```
+- DriverManager는 커넥션을 획득할 때 마다 URL, USERNAME, PASSWORD 같은 파라미터들을 계속 전달해야함.
+- DataSource는 처음 객체 생성할때만 필요한 파라미터를 넘겨둠.
+
+#### 설정과 사용의 분리
+- 설정
+  - DataSource를 만들고 필요한 속성들을 사용해서 URL, USERNAME, PASSWORD 같은 부분들을 입력하는 것
+- 사용
+  - 설정은 신경쓰지 않고, DataSource의 getConnection()만 호출해서 사용하면 됨.
+
+#### 설정과 사용의 분리 설명
+- Repository는 DataSource만 의존하고 다른 속성들을 몰라도 됨.
+- 객체를 설정하는 부분, 사용하는 부분을 명확하게 분리할 수 있음.
+ 
