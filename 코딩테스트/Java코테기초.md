@@ -27,7 +27,7 @@ Arrays.sort(arr, Collections.reverseOrder());
 // 3. 일부만 정렬(인덱스 0-4만 정렬)
 Arrays.sort(arr, 0, 4);
 
-// 4. 오름차순 정렬하면 binary search 로 특정값을 찾을 수 있다
+// 4. 오름차순 정렬하면 binary search 로 특정값을 찾을 수 있다.
 Arrays.binarySearch(arr,2);
 
 // 5. 배열을 ArrayList로 변환
@@ -74,7 +74,7 @@ String[] arr = str.split("");
 str = str.toUpperCase();
 str = str.toLowerCase();
 
-// 한번 쓴 문자열은 변경 불가함
+// *한번 쓴 문자열은 변경 불가함*
 ```
 
 ### 5. HashMap
@@ -98,5 +98,48 @@ hm.put("java", hm.getOrDefault("java",3));
 // 6. keySet() 함수로 맵 순회
 for(String key) : hm.keySet()){
     hm.get(key);
+}
+```
+
+### 6. ArrayList
+```java
+// 1. 선언
+ArrayList<String> list = new ArrayList<>();
+
+// 2. 삽입
+list.add("java");
+list.add(0, "javascript"); //0번째 인덱스에 삽입
+
+// 3. 수정
+list.set(1, "c++")
+
+// 4. 삭제
+list.remove(1); //헤딩 인덱스 삭제
+
+// 5. 값 존재 유무 확인
+list.contains("java"); //false
+list.indexOf("javascript"); //존재하면 인덱스 리턴, 없으면 -1 리턴
+
+// 6. iterator 사용
+Iterator it = list.iterator();
+
+// 6-1. 인덱스 오름차순 순회
+while (it.hasNext()) {
+    // ...
+}
+
+// 6-2. 인덱스 내림차순 조회
+while (it.hasPrevious()) {
+    // ...
+}
+
+// 7. 중복없이 값을 넣고 싶을 때
+if(list.indexOf(value) < 0 ){
+    list.put(value);    
+}
+
+// 8. 리스트 값 하나씩 가져올 때 (int 일 경우)
+for(int i=0; i<list.size(); i++){
+    list.get(i).intValue();
 }
 ```
